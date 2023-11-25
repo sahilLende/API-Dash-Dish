@@ -1,6 +1,6 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
+  "name": "api-dash-dish",
+  "version": "0.0.0",
   "description": "",
   "type": "module",
   "main": "index.js",
