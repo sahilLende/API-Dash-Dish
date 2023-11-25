@@ -7,6 +7,7 @@ import helmet from "helmet";
 import { rateLimit } from "express-rate-limit";
 
 const app = express();
+app.set("trust proxy", 1);
 const port = process.env.PORT || 5000;
 
 const corsOptions = {
@@ -24,12 +25,17 @@ const limiter = rateLimit({
 });
 
 /*middleware */
+
 app.use(helmet());
 app.use(limiter);
 app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/", routes);
+app.get("/ip", (request, response) => response.send(request.ip));
+app.get("/x-forwarded-for", (request, response) =>
+  response.send(request.headers["x-forwarded-for"])
+);
 
 // Configure urlencoded middleware here
 
