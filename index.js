@@ -14,7 +14,7 @@ const corsOptions = {
   origin: ["http://localhost:5173", "http://192.168.1.41:5173"],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
-app.set("trust proxy", 0);
+app.set("trust proxy", true);
 /* connect to database */
 connectToMongoose();
 const limiter = rateLimit({
