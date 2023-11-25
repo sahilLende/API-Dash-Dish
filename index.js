@@ -13,7 +13,7 @@ const corsOptions = {
   origin: ["http://localhost:5173", "http://192.168.1.41:5173"],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
-
+app.set("trust proxy", true);
 /* connect to database */
 connectToMongoose();
 const limiter = rateLimit({
@@ -21,7 +21,6 @@ const limiter = rateLimit({
   max: 20, // Limit each IP to 20 requests per `window` (here, per 15 minutes).
   standardHeaders: "draft-7", // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
-  // store: ... , // Use an external store for consistency across multiple server instances.
 });
 
 /*middleware */
