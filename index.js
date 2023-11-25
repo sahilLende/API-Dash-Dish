@@ -7,7 +7,7 @@ import helmet from "helmet";
 import { rateLimit } from "express-rate-limit";
 
 const app = express();
-app.set("trust proxy", 1);
+app.set("trust proxy");
 const port = process.env.PORT || 5000;
 
 const corsOptions = {
