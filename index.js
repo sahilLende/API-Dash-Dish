@@ -9,11 +9,11 @@ import debug from "debug";
 const logger = debug("server");
 
 const app = express();
-app.set("trust proxy", true);
+app.set("trust proxy", 0);
 const port = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: ["http://localhost:5173", "http://192.168.1.41:5173", "raiwalayapp"],
+  origin: ["http://localhost:5173", "api-dashdish.up.railway.app"],
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
@@ -40,5 +40,5 @@ app.get("/x-forwarded-for", (request, response) =>
 );
 
 app.listen(port, () => {
-  logger(`Server Running 💯`);
+  return logger(`Server Running 💯`);
 });
