@@ -11,8 +11,10 @@ if (!MONGODB_URL) {
 const connectToMongoose = async () => {
   try {
     await connect(MONGODB_URL);
+    console.log("db Connetc!");
     return logger("Great! Connected to DB 💚");
   } catch (err) {
+    console.log(err);
     return logger("Opps! DB connection not established 💔", err);
   }
 };
